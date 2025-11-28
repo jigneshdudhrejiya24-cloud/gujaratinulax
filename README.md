@@ -3,7 +3,11 @@ The Netlify deploy errored, with the following guidance provided:
 Diagnosis
 
 - Relevant log lines: [line 8](#L8) and [line 9](#L9).
-- Error type and cause: Netlify failed while reading the build configuration because the configured "base directory" points to an absolute path that does not exist in the repo: "Base directory does not exist: /opt/build" ([line 8](#L8)). This indicates your Netlify build settings (in netlify.toml or the Site settings UI) are set to an invalid/absolute path (/opt/build) instead of a path relative to the repository, or to a directory that isn't present in the repo.
+# If your site lives in a subfolder called "client"
+[build]
+  base = "client"
+  publish = "client/dist"
+  command = "npm run build"
 
 Solution
 
